@@ -1,7 +1,18 @@
+import React from "react";
+
+import ExtraRoomMenu from "@/components/roomPage/roomChat/ExtraRoomMenu";
+import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
+
 const page = () => {
   return (
     <>
-      <h2>Room Chat</h2>
+      <BasicAnimationLayout
+        Tag="div"
+        style="flex-1 rounded-md bg-main-bg shadow-static-shadow p-2"
+        id="home-friends-requests-mgmt"
+      >
+        <ExtraRoomMenu />
+      </BasicAnimationLayout>
     </>
   );
 };

@@ -1,15 +1,14 @@
-// Get DmRoom Information =============================================================================================
-
-// ====================================================================================================================
-
-// Get Friends/Requests Information ===================================================================================
-
-// ====================================================================================================================
+import { MainHomeContents } from "@/components/homePage/friendsRequestsPanel/MainHomeContent";
+import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
 export default function Home() {
   return (
-    <>
-      <h1>VChat</h1>
-    </>
+    <BasicAnimationLayout
+      Tag="div"
+      style="flex-1 rounded-md bg-main-bg shadow-static-shadow p-2"
+      id="home-friends-requests-mgmt"
+    >
+      <MainHomeContents />
+    </BasicAnimationLayout>
   );
 }

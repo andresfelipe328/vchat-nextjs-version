@@ -1,15 +1,15 @@
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
-const page = () => {
+const RequestList = () => {
   return (
     <BasicAnimationLayout
       Tag="div"
-      style="flex-1 rounded-md bg-main-bg shadow-static-shadow p-2"
-      id="home-friends-requests-mgmt"
+      style="flex flex-col gap-2"
+      id="request-listing"
     >
-      <h2>dmRoom Chat</h2>
+      <h1 className="border-b-2 border-b-dark/50 uppercase">requests</h1>
     </BasicAnimationLayout>
   );
 };
 
-export default page;
+export default RequestList;

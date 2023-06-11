@@ -59,3 +59,35 @@
     @apply w-1 h-1;
   }
 }
+
+@layer components {
+  .shadow-animation {
+    @apply shadow-static-shadow hover:shadow-hover-shadow transition-all duration-300 ease-in-out;
+  }
+
+  .sidebar-overflow {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .sidebar-overflow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-icon {
+    @apply hover:rounded-2xl rounded-3xl transition-all duration-200 ease-in-out;
+  }
+
+  .remove-blur {
+    backface-visibility: hidden;
+    transform: perspective(1px) scale(1.1);
+  }
+
+  .icon {
+    @apply text-dark text-lg;
+  }
+
+  .button {
+    @apply bg-sub-bg rounded-md w-full p-1 shadow-small-shadow hover:shadow-static-shadow disabled:opacity-60 transition-all duration-300 ease-in-out;
+  }
+}

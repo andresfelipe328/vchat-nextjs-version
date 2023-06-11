@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import Sidebar from "@/components/global/sidebar/Sidebar";
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
 import { Montserrat } from "next/font/google";
@@ -18,14 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        {/* <Sibar/> */}
-        {/* <BasicAnimationLayout
+        <BasicAnimationLayout
           Tag="main"
           style="p-2 h-screen flex gap-1"
           id="main-conent-container"
-        > */}
-        {children}
-        {/* </BasicAnimationLayout> */}
+        >
+          <Sidebar />
+          {children}
+        </BasicAnimationLayout>
       </body>
     </html>
   );
