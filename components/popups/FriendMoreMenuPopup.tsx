@@ -17,16 +17,17 @@ const FriendMoreMenuPopup = () => {
   const [show, setShow] = useState(false);
 
   const handleCallFriend = async () => {
-    const res = await fetch("http://localhost:3000/api/create-voice-call", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        username: "friend",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/create-voice-call", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: "friend",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Maing a voice call...");
   };
 
   const handleDeleteFriend = async () => {

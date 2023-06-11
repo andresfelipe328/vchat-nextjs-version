@@ -8,16 +8,17 @@ import FriendMoreMenuPopup from "@/components/popups/FriendMoreMenuPopup";
 
 const Friend = () => {
   const handleCreateDmRoom = async () => {
-    const res = await fetch("http://localhost:3000/api/create-dm-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        username: "friend",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/create-dm-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: "friend",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Creating dm room...");
   };
 
   return (

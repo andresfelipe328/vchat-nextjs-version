@@ -21,16 +21,17 @@ const RoomMenuPopup = () => {
   const [showAdd, setShowAdd] = useState(false);
 
   const handleDeleteRoom = async () => {
-    const res = await fetch("http://localhost:3000/api/delete-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "roomname",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/delete-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "roomname",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Deleting room...");
   };
 
   return (

@@ -19,16 +19,17 @@ const RenameMiniRoomForm = ({ show, setShow }: Props) => {
   const handleAddFriend = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/api/rename-mini-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/rename-mini-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: name,
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Renaming mini room...");
 
     setShow(false);
     setName(null);

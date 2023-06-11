@@ -6,16 +6,17 @@ import UserMenuPopup from "@/components/popups/UserMenuPopup";
 
 const SidebarMenu = () => {
   const handleCreateRoom = async () => {
-    const res = await fetch("http://localhost:3000/api/create-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "roomname",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/create-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "roomname",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Creating new room...");
   };
 
   return (

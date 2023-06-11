@@ -22,16 +22,17 @@ const CreateDmRoomForm = ({ show, setShow }: Props) => {
   const handleCreateDmRoom = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/api/create-dm-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "dmRoomname",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/create-dm-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "dmRoomname",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Creating dm room...");
 
     setFriend(null);
     setFriendList(null);

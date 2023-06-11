@@ -11,16 +11,17 @@ const MiniRoomMenu = () => {
   const [show, setShow] = useState(false);
 
   const handleDeleteMiniroom = async () => {
-    const res = await fetch("http://localhost:3000/api/delete-mini-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "miniRoomname",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/delete-mini-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "miniRoomname",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Deleting mini room...");
   };
 
   return (

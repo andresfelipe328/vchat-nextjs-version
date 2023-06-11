@@ -22,16 +22,17 @@ const MainRoomSettingsPopup = () => {
   const [showRename, setShowRename] = useState(false);
 
   const handleDeleteMainRoom = async () => {
-    const res = await fetch("http://localhost:3000/api/delete-main-room", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "mainRoomname",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/delete-main-room", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "mainRoomname",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Deleing main room");
   };
 
   return (
