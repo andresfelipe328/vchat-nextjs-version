@@ -31,16 +31,17 @@ const FriendMoreMenuPopup = () => {
   };
 
   const handleDeleteFriend = async () => {
-    const res = await fetch("http://localhost:3000/api/delete-friend", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        username: "friend",
-      }),
-    });
-    const result = await res.json();
+    // const res = await fetch("http://localhost:3000/api/delete-friend", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: "friend",
+    //   }),
+    // });
+    // const result = await res.json();
+    console.log("Deleting friend...");
   };
 
   return (
