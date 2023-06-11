@@ -1,3 +1,5 @@
+"use client";
+
 import { FaUsers } from "react-icons/fa";
 
 import AddFriendPopup from "@/components/popups/AddFriendPopup";
