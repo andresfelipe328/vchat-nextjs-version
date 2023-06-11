@@ -6,17 +6,13 @@ import FindDmRoom from "./FindDmRoom";
 import DmRoomList from "./DmRoomList";
 import CreateDmRoom from "./CreateDmRoom";
 
-type Props = {
-  createDmRoom?: Function;
-};
-
-const MainMgmntBar = ({ createDmRoom }: Props) => {
+const MainMgmntBar = () => {
   const [dmRoom, setDmRoom] = useState<string>("");
 
   return (
     <>
       <FindDmRoom dmRoom={dmRoom} setDmRoom={setDmRoom} />
-      <CreateDmRoom createDmRoom={createDmRoom} />
+      <CreateDmRoom />
       <DmRoomList />
     </>
   );
