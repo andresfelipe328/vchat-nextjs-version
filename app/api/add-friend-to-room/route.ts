@@ -10,6 +10,6 @@ export async function POST(request: Request) {
   console.log("Adding", data.username, "to the room...");
   return NextResponse.json({
     message: "Adding new friend to the room...",
-    code: 202,
+    status: 200,
   });
 }

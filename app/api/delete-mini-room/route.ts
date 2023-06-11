@@ -10,6 +10,6 @@ export async function POST(request: Request) {
   console.log("Deleting", data.name, "...");
   return NextResponse.json({
     message: "Deleting mini room...",
-    code: 202,
+    status: 200,
   });
 }

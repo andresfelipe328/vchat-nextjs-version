@@ -8,5 +8,8 @@ export async function POST(request: Request) {
   const data: MINIROOM = await request.json();
 
   console.log("Creating", data.name, "to main room...");
-  return NextResponse.json({ message: "Creating new mini room...", code: 202 });
+  return NextResponse.json({
+    message: "Creating new mini room...",
+    status: 200,
+  });
 }

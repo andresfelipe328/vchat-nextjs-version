@@ -8,5 +8,8 @@ export async function POST(request: Request) {
   const data: Friend = await request.json();
 
   console.log("Deleting", data.username, "...");
-  return NextResponse.json({ message: "Deleting friend...", code: 202 });
+  return NextResponse.json({
+    message: "Deleting friend...",
+    status: 200,
+  });
 }

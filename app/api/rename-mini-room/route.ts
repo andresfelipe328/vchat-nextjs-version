@@ -10,6 +10,6 @@ export async function POST(request: Request) {
   console.log("Editing", data.name, "'s name...");
   return NextResponse.json({
     message: "Changing mini room name...",
-    code: 202,
+    status: 200,
   });
 }
