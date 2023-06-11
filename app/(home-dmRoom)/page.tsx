@@ -3,12 +3,12 @@ import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAni
 
 export default function Home() {
   return (
-    <BasicAnimationLayout
-      Tag="div"
-      style="flex-1 rounded-md bg-main-bg shadow-static-shadow p-2"
+    <div
+      // Tag="div"
+      className="flex-1 rounded-md bg-main-bg shadow-static-shadow p-2"
       id="home-friends-requests-mgmt"
     >
       <MainHomeContents />
-    </BasicAnimationLayout>
+    </div>
   );
 }
