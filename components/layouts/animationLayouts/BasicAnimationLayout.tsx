@@ -1,9 +1,16 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, forwardRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-const BasicAnimationLayout = forwardRef(function Input(props: any, ref: any) {
+type Props = {
+  Tag: any;
+  style: string;
+  id: string;
+  children: React.ReactNode;
+};
+
+const BasicAnimationLayout = ({ Tag, style, id, children }: Props) => {
   // Animation =======================================================================================================
   const rootRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -27,10 +34,10 @@ const BasicAnimationLayout = forwardRef(function Input(props: any, ref: any) {
   // =================================================================================================================
 
   return (
-    <props.Tag className={props.style} ref={rootRef} id={props.id}>
-      {props.children}
-    </props.Tag>
+    <Tag className={style} ref={rootRef} id={id}>
+      {children}
+    </Tag>
   );
-});
+};
 
 export default BasicAnimationLayout;
