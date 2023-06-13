@@ -14,6 +14,7 @@ import { GiNightSleep, GiCancel } from "react-icons/gi";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 
 import CollapseAnimationLayout from "../layouts/animationLayouts/CollapseAnimationLayout";
+import Image from "next/image";
 
 const USERSTATUS = [
   {
@@ -47,7 +48,7 @@ const STYLE = {
 };
 
 type Props = {
-  session: Session | null;
+  session: any;
 };
 
 const UserMenuPopup = ({ session }: Props) => {
@@ -61,7 +62,20 @@ const UserMenuPopup = ({ session }: Props) => {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        <FaUser className="text-dark text-5xl bg-sub-bg p-2 rounded-3xl shadow-animation border-4 border-dark sidebar-icon" />
+        {session ? (
+          <div className="relative bg-cover rounded-3xl border-4 bg-dark border-dark shadow-animation sidebar-icon">
+            <Image
+              src={session!.user!.image}
+              alt="user's icon"
+              width={48}
+              height={48}
+              className="rounded-3xl"
+            />
+            <div className="absolute bottom-0 -right-2 w-4 h-4 rounded-3xl bg-green-500 border-2 border-dark"></div>
+          </div>
+        ) : (
+          <FaUser className="text-dark text-5xl bg-sub-bg p-2 shadow-animation border-4 border-dark sidebar-icon" />
+        )}
       </button>
 
       <CollapseAnimationLayout show={show} setShow={setShow} style={STYLE}>

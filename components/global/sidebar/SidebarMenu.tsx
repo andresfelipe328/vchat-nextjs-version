@@ -6,7 +6,7 @@ import { authConfig } from "@/config/auth";
 import UserMenuPopup from "@/components/popups/UserMenuPopup";
 
 const SidebarMenu = async () => {
-  const session = (await getServerSession(authConfig)) || null;
+  const session = await getServerSession(authConfig);
 
   const handleCreateRoom = async () => {
     // const res = await fetch("http://localhost:3000/api/create-room", {
@@ -28,7 +28,7 @@ const SidebarMenu = async () => {
       id="sidebar-user-menu"
     >
       <button>
-        <FaPlus className="text-dark text-5xl bg-sub-bg p-2 rounded-3xl shadow-animation border-4 border-dark sidebar-icon" />
+        <FaPlus className="text-dark text-5xl bg-sub-bg p-2 shadow-animation border-4 border-dark sidebar-icon" />
       </button>
 
       <UserMenuPopup session={session} />

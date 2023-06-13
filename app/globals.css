@@ -90,4 +90,8 @@
   .button {
     @apply bg-sub-bg rounded-md w-full p-1 shadow-small-shadow hover:shadow-static-shadow disabled:opacity-60 transition-all duration-300 ease-in-out;
   }
+
+  /* .user-icon::after {
+    @apply after:content-[''] w-4 h-4 rounded-3xl bg-main-bg bottom-0 right-0;
+  } */
 }
