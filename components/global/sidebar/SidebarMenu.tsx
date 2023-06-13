@@ -24,7 +24,7 @@ const SidebarMenu = async () => {
 
   return (
     <div
-      className=" p-2 flex flex-col items-center gap-4 border-t-4 border-t-sub-bg z-20"
+      className="mt-auto p-2 flex flex-col items-center gap-4 border-t-4 border-t-sub-bg z-20"
       id="sidebar-user-menu"
     >
       <button>
