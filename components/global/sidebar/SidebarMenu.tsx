@@ -1,10 +1,13 @@
-"use client";
-
 import { FaPlus } from "react-icons/fa";
+
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/config/auth";
 
 import UserMenuPopup from "@/components/popups/UserMenuPopup";
 
-const SidebarMenu = () => {
+const SidebarMenu = async () => {
+  const session = (await getServerSession(authConfig)) || null;
+
   const handleCreateRoom = async () => {
     // const res = await fetch("http://localhost:3000/api/create-room", {
     //   method: "POST",
@@ -21,14 +24,14 @@ const SidebarMenu = () => {
 
   return (
     <div
-      className="relative p-2 flex flex-col items-center gap-4 border-t-4 border-t-sub-bg z-20"
+      className=" p-2 flex flex-col items-center gap-4 border-t-4 border-t-sub-bg z-20"
       id="sidebar-user-menu"
     >
-      <button onClick={handleCreateRoom}>
+      <button>
         <FaPlus className="text-dark text-5xl bg-sub-bg p-2 rounded-3xl shadow-animation border-4 border-dark sidebar-icon" />
       </button>
 
-      <UserMenuPopup />
+      <UserMenuPopup session={session} />
     </div>
   );
 };

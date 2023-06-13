@@ -7,11 +7,14 @@ import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Vchat",
+  title: {
+    default: "Vchat",
+    template: "Vchat- %s",
+  },
   description: "real time chatting application",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

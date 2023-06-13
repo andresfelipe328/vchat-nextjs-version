@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/config/auth";
+
 import SidebarRoomMgmnt from "./SidebarRoomMgmnt";
 import SidebarMenu from "./SidebarMenu";
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const session = await getServerSession(authConfig);
+
   return (
     <BasicAnimationLayout
       Tag="header"
@@ -28,7 +33,7 @@ const Sidebar = () => {
         />
       </Link>
 
-      <SidebarRoomMgmnt />
+      {session && <SidebarRoomMgmnt />}
 
       <SidebarMenu />
     </BasicAnimationLayout>

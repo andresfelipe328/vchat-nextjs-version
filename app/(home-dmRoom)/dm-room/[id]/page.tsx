@@ -1,5 +1,10 @@
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
+export const metadata = {
+  title: "dmroom",
+  description: "dmroom information",
+};
+
 const page = () => {
   return (
     <BasicAnimationLayout

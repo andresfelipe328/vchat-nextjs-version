@@ -2,11 +2,16 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
 
 import { FaUser } from "react-icons/fa";
 import { GoPrimitiveDot } from "react-icons/go";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { GiNightSleep, GiCancel } from "react-icons/gi";
+import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 
 import CollapseAnimationLayout from "../layouts/animationLayouts/CollapseAnimationLayout";
 
@@ -35,14 +40,23 @@ const USERSTATUS = [
 
 const STYLE = {
   width: "165px",
-  top: "-.45rem",
-  left: "5.3rem",
+  bottom: "0",
+  left: "5.15rem",
   position: "absolute",
   zIndex: "50",
 };
-const UserMenuPopup = () => {
+
+type Props = {
+  session: Session | null;
+};
+
+const UserMenuPopup = ({ session }: Props) => {
   const router = useRouter();
   const [show, setShow] = useState(false);
+
+  const handleLogout = async () => {
+    signOut();
+  };
 
   return (
     <>
@@ -52,19 +66,25 @@ const UserMenuPopup = () => {
 
       <CollapseAnimationLayout show={show} setShow={setShow} style={STYLE}>
         <ul className="flex flex-col gap-1">
-          {/* <li className='group border-b-2 border-mainBg mb-1'>
-                  { userAuth ?
-                        <button className='flex items-center justify-between w-full pb-2 group-hover:translate-x-2 transition-transform duration-150 ease-out' onClick={handleLogout}>
-                           <small>logout</small>
-                           <BiLogOutCircle className='text-lg'/>
-                        </button>
-                     :
-                        <Link to='/' className='flex items-center justify-between w-full pb-2 group-hover:translate-x-2 transition-transform duration-150 ease-out'>
-                           <small>login</small>
-                           <BiLogInCircle className='text-lg'/>
-                        </Link>
-                  }
-               </li> */}
+          <li className="group border-b-2 border-dark mb-1">
+            {session ? (
+              <button
+                className="flex items-center justify-between w-full pb-2 group-hover:translate-x-1 transition-transform duration-150 ease-out"
+                onClick={handleLogout}
+              >
+                <small>logout</small>
+                <BiLogOutCircle className=" icon" />
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="flex items-center justify-between w-full pb-2 group-hover:translate-x-2 transition-transform duration-150 ease-out"
+              >
+                <small>login</small>
+                <BiLogInCircle className=" icon" />
+              </Link>
+            )}
+          </li>
           {USERSTATUS.map((status, i) => (
             <li className="group" key={i}>
               <button className="flex items-center gap-1 w-full group-hover:translate-x-1 group-hover:bg-sub-bg/[.65] rounded-md p-1 transition-all duration-150 ease-out remove-blur">
