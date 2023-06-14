@@ -2,6 +2,7 @@ import "./globals.css";
 
 import Sidebar from "@/components/global/sidebar/Sidebar";
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
+import RootAnimationLayout from "@/components/layouts/animationLayouts/RootAnimationLayout";
 
 import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -22,14 +23,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <BasicAnimationLayout
-          Tag="main"
-          style="p-2 h-screen flex gap-1"
-          id="main-conent-container"
+        <RootAnimationLayout
+        // Tag="main"
+        // style="p-2 h-screen flex gap-1"
+        // id="main-conent-container"
         >
           <Sidebar />
           {children}
-        </BasicAnimationLayout>
+        </RootAnimationLayout>
       </body>
     </html>
   );
