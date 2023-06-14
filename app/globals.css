@@ -94,4 +94,14 @@
   /* .user-icon::after {
     @apply after:content-[''] w-4 h-4 rounded-3xl bg-main-bg bottom-0 right-0;
   } */
+
+  .noJS .root {
+    animation: fade-in-fallback 0.1s 2s forwards ease;
+  }
+
+  @keyframes fade-in-fallback {
+    to {
+      opacity: 1;
+    }
+  }
 }
