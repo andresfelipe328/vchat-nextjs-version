@@ -23,14 +23,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <RootAnimationLayout
-        // Tag="main"
-        // style="p-2 h-screen flex gap-1"
-        // id="main-conent-container"
+        <main
+          className="p-2 h-screen flex gap-1"
+          // Tag="main"
+          // style="p-2 h-screen flex gap-1"
+          // id="main-conent-container"
         >
           <Sidebar />
           {children}
-        </RootAnimationLayout>
+        </main>
       </body>
     </html>
   );
