@@ -3,7 +3,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-const RooteAnimationLayout = ({ children }: { children: React.ReactNode }) => {
+const RootAnimationLayout = ({ children }: { children: React.ReactNode }) => {
   // Animation =======================================================================================================
   const rootRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -33,4 +33,4 @@ const RooteAnimationLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RooteAnimationLayout;
+export default RootAnimationLayout;

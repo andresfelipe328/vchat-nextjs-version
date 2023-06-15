@@ -4,9 +4,21 @@ import { getServerSession } from "next-auth";
 import { authConfig } from "@/config/auth";
 
 import UserMenuPopup from "@/components/popups/UserMenuPopup";
+import { cookies } from "next/headers";
+
+type IsSession = {
+  isLogged: boolean;
+};
 
 const SidebarMenu = async () => {
-  const session = await getServerSession(authConfig);
+  const session = cookies().get("session");
+  const res = await fetch("https://vchat-nextjs-version.vercel.app/api/login", {
+    method: "GET",
+    headers: {
+      Cookie: `session=${session?.value || ""}`,
+    },
+  });
+  const isSession: IsSession = await res.json();
 
   const handleCreateRoom = async () => {
     // const res = await fetch("http://localhost:3000/api/create-room", {
@@ -27,11 +39,13 @@ const SidebarMenu = async () => {
       className="mt-auto p-2 flex flex-col items-center gap-4 border-t-4 border-t-sub-bg z-20"
       id="sidebar-user-menu"
     >
-      <button>
-        <FaPlus className="text-dark text-5xl bg-sub-bg p-2 shadow-animation border-4 border-dark sidebar-icon" />
-      </button>
+      {isSession.isLogged && (
+        <button>
+          <FaPlus className="text-dark text-5xl bg-sub-bg p-2 shadow-animation border-4 border-dark sidebar-icon" />
+        </button>
+      )}
 
-      <UserMenuPopup session={session} />
+      <UserMenuPopup session={isSession} />
     </div>
   );
 };

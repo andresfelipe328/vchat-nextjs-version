@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { cookies } from "next/headers";
 
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/config/auth";
@@ -8,8 +9,21 @@ import SidebarRoomMgmnt from "./SidebarRoomMgmnt";
 import SidebarMenu from "./SidebarMenu";
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
+type IsSession = {
+  isLogged: boolean;
+};
+
 const Sidebar = async () => {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
+  const session = cookies().get("session");
+  console.log(session);
+  const res = await fetch("https://vchat-nextjs-version.vercel.app/api/login", {
+    method: "GET",
+    headers: {
+      Cookie: `session=${session?.value || ""}`,
+    },
+  });
+  const isSession: IsSession = await res.json();
 
   return (
     <BasicAnimationLayout
@@ -33,7 +47,7 @@ const Sidebar = async () => {
         />
       </Link>
 
-      {session && <SidebarRoomMgmnt />}
+      {isSession.isLogged && <SidebarRoomMgmnt />}
 
       <SidebarMenu />
     </BasicAnimationLayout>

@@ -4,7 +4,7 @@ import { MainHomeContents } from "@/components/homePage/friendsRequestsPanel/Mai
 import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
 
 export default async function Home() {
-  await loginRequiredServer();
+  // await loginRequiredServer();
 
   return (
     <BasicAnimationLayout

@@ -1,8 +1,7 @@
 import "./globals.css";
 
 import Sidebar from "@/components/global/sidebar/Sidebar";
-import BasicAnimationLayout from "@/components/layouts/animationLayouts/BasicAnimationLayout";
-import RooteAnimationLayout from "@/components/layouts/animationLayouts/RooteAnimationLayout";
+import RootAnimationLayout from "@/components/layouts/animationLayouts/RootAnimationLayout";
 
 import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -22,11 +21,11 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`noJS ${montserrat.className}`}>
-        <RooteAnimationLayout>
+      <body className={`noJS overflow-hidden ${montserrat.className}`}>
+        <RootAnimationLayout>
           <Sidebar />
           {children}
-        </RooteAnimationLayout>
+        </RootAnimationLayout>
       </body>
     </html>
   );

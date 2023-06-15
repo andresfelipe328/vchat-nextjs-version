@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { Session } from "next-auth";
-import { signOut } from "next-auth/react";
+import { auth } from "@/config/firebase-config";
+import { signOut } from "firebase/auth";
 
 import { FaUser } from "react-icons/fa";
 import { GoPrimitiveDot } from "react-icons/go";
@@ -47,8 +48,12 @@ const STYLE = {
   zIndex: "50",
 };
 
+type IsSession = {
+  isLogged: boolean;
+};
+
 type Props = {
-  session: any;
+  session: IsSession;
 };
 
 const UserMenuPopup = ({ session }: Props) => {
@@ -56,21 +61,33 @@ const UserMenuPopup = ({ session }: Props) => {
   const [show, setShow] = useState(false);
 
   const handleLogout = async () => {
-    signOut();
+    await signOut(auth);
+
+    //Clear the cookies in the server
+    const response = await fetch(
+      "https://vchat-nextjs-version.vercel.app/api/logout",
+      {
+        method: "POST",
+      }
+    );
+
+    if (response.status === 200) {
+      router.push("/login");
+    }
   };
 
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {session ? (
+        {session.isLogged ? (
           <div className="relative bg-cover rounded-3xl border-4 bg-dark border-dark shadow-animation sidebar-icon">
-            <Image
+            {/* <Image
               src={session!.user!.image}
               alt="user's icon"
               width={48}
               height={48}
               className="rounded-3xl"
-            />
+            /> */}
             <div className="absolute bottom-0 -right-2 w-4 h-4 rounded-3xl bg-green-500 border-2 border-dark"></div>
           </div>
         ) : (
@@ -81,7 +98,7 @@ const UserMenuPopup = ({ session }: Props) => {
       <CollapseAnimationLayout show={show} setShow={setShow} style={STYLE}>
         <ul className="flex flex-col gap-1">
           <li className="group border-b-2 border-dark mb-1">
-            {session ? (
+            {session.isLogged ? (
               <button
                 className="flex items-center justify-between w-full pb-2 group-hover:translate-x-1 transition-transform duration-150 ease-out"
                 onClick={handleLogout}
@@ -99,14 +116,15 @@ const UserMenuPopup = ({ session }: Props) => {
               </Link>
             )}
           </li>
-          {USERSTATUS.map((status, i) => (
-            <li className="group" key={i}>
-              <button className="flex items-center gap-1 w-full group-hover:translate-x-1 group-hover:bg-sub-bg/[.65] rounded-md p-1 transition-all duration-150 ease-out remove-blur">
-                <status.icon style={{ color: status.color }} />
-                <small>{status.name}</small>
-              </button>
-            </li>
-          ))}
+          {session.isLogged &&
+            USERSTATUS.map((status, i) => (
+              <li className="group" key={i}>
+                <button className="flex items-center gap-1 w-full group-hover:translate-x-1 group-hover:bg-sub-bg/[.65] rounded-md p-1 transition-all duration-150 ease-out remove-blur">
+                  <status.icon style={{ color: status.color }} />
+                  <small>{status.name}</small>
+                </button>
+              </li>
+            ))}
         </ul>
       </CollapseAnimationLayout>
     </>

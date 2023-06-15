@@ -4,11 +4,35 @@ import React from "react";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 
+import { getRedirectResult, signInWithRedirect } from "firebase/auth";
+import { auth, provider } from "@/config/firebase-config";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 const SignInGoogle = () => {
-  const handleLogin = () => {
-    signIn("google", {
-      callbackUrl: "/",
+  const router = useRouter();
+
+  useEffect(() => {
+    getRedirectResult(auth).then(async (userCred) => {
+      if (!userCred) {
+        return;
+      }
+
+      fetch("/api/login", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          router.push("/");
+        }
+      });
     });
+  }, []);
+
+  const handleLogin = () => {
+    signInWithRedirect(auth, provider);
   };
 
   return (
